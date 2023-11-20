@@ -104,59 +104,7 @@ public class customersManager {
         return true;
     }
 
-//    public customers getCustomer(int customer_id) {
-//        customers customer = null;
-//
-//        try {
-//            forName("com.mysql.jdbc.Driver");
-//            Connection con = DriverManager.getConnection(
-//                    "jdbc:mysql://localhost:3306/application", "root", "");
-//            String query = "SELECT * FROM customers WHERE customer_id = ?";
-//            PreparedStatement preparedStatement = con.prepareStatement(query);
-//            preparedStatement.setInt(1, customer_id);
-//
-//            ResultSet rs = preparedStatement.executeQuery();
-//            if (rs.next()) {
-//                // Retrieve customer data from the result set
-//                String firstName = rs.getString("first_name");
-//                String email = rs.getString("email");
-//                String phone_number = rs.getString("phone_number");
-//
-//                // Create a Customer object
-//                customer = new customers(customer_id,firstName, email, phone_number);
-//            }
-//            ObjectMapper objectMapper = new ObjectMapper();
-//            String json = objectMapper.writeValueAsString(customer);
-//            System.out.println(json);
-//            con.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        return customer;
-//    }
 
-
-//    public List<customers> getAllCustomers() {
-//        try {
-//            forName("com.mysql.jdbc.Driver");
-//            Connection con = DriverManager.getConnection(
-//                    "jdbc:mysql://localhost:3306/application", "root", "");
-//            Statement stmt = con.createStatement();
-//            String q1 = "select * from customers";
-//            ResultSet rs = stmt.executeQuery(q1);
-//            while (rs.next()) {
-//                allCustomers.add(new customers(rs.getString(2), rs.getString(3), rs.getString(4)));
-//            }
-//            ObjectMapper objectMapper = new ObjectMapper();
-//            String json = objectMapper.writeValueAsString(allCustomers);
-//            System.out.println(json);
-//            con.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return allCustomers;
-//    }
 
     public customers updateCustomers(int customer_id, String first_name, String email, String phone_number) {
         customers updatedCustomer = null;
@@ -230,39 +178,6 @@ public class customersManager {
 
         return updatedCustomer;
     }
-
-//    public List<String> getContactPersons(int customer_id) {
-//        List<String> contactPersons = new ArrayList<>();
-//
-//        try {
-//            forName("com.mysql.jdbc.Driver");
-//            // Create a connection to your database
-//            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/application", "root", "");
-//
-//            // Create a PreparedStatement with the SQL query to retrieve contact persons
-//            String sql = "SELECT person_name FROM contact_persons WHERE customer_id = ?";
-//            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-//            preparedStatement.setInt(1, customer_id);
-//
-//            // Execute the query and get the result set
-//            ResultSet resultSet = preparedStatement.executeQuery();
-//
-//            // Process the result and add contact person names to the list
-//            while (resultSet.next()) {
-//                String personName = resultSet.getString("person_name");
-//                contactPersons.add(personName);
-//            }
-//
-//            // Close the database connections
-//            resultSet.close();
-//            preparedStatement.close();
-//            connection.close();
-//        } catch (SQLException | ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return contactPersons;
-//    }
 
 
     public customers getCustomer(int customer_id) {
