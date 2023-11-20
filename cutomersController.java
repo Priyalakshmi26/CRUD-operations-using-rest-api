@@ -55,30 +55,7 @@ public class cutomersController extends HttpServlet{
         out.flush();
     }
 
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        // Read parameters from the request
-//        PrintWriter out = response.getWriter();
-//        response.setContentType("application/json");
-//        response.setCharacterEncoding("UTF-8");
-//        String pathInfo = request.getPathInfo();
-//        if(pathInfo==null || pathInfo.equals("/")) {
-//            JsonNode jsonNode = objectMapper.readTree(request.getReader());
-//
-//            String name = jsonNode.get("name").asText();
-//            String email = jsonNode.get("email").asText();
-//            String phone_number = jsonNode.get("phone_number").asText();
-//
-//            customers newCustomers = new customers(name, email, phone_number);
-//            instance.addCustomers(name, email, phone_number);
-//            response.setStatus(HttpServletResponse.SC_CREATED);
-//            response.getWriter().print("Customer added successfully");
-//        }
-////        String[] pathParts = pathInfo.split("/");
-////        if(pathParts.length==3){
-////
-////        }
-//    }
+
 @Override
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     PrintWriter out = response.getWriter();
@@ -117,25 +94,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid URL");
     }
 }
-//    @Override
-//    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        PrintWriter out = response.getWriter();
-//        String pathInfo = request.getPathInfo();
-//
-//        if (pathInfo == null || pathInfo.equals("/")) {
-//            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid URL");
-//        } else {
-//            String[] pathParts = pathInfo.split("/");
-//            if (pathParts.length == 2) {
-//                String customerid = pathParts[1];
-//                instance.removeCustomers(Integer.parseInt(customerid));
-//                response.getWriter().print("Customer deleted successfully");
-//            } else {
-//                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid URL");
-//            }
-//        }
-//        out.flush();
-//    }
+
 @Override
 protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     PrintWriter out = response.getWriter();
@@ -170,43 +129,7 @@ protected void doDelete(HttpServletRequest request, HttpServletResponse response
     out.flush();
 }
 
-//    @Override
-//    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        PrintWriter out = response.getWriter();
-//        String pathInfo = request.getPathInfo();
-//
-//        if (pathInfo == null || pathInfo.equals("/")) {
-//            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid URL");
-//        } else {
-//            String[] pathParts = pathInfo.split("/");
-//            if (pathParts.length == 2) {
-//                String customer_id = pathParts[1]; // Get the customer ID from the URL
-//                JsonNode jsonNode = objectMapper.readTree(request.getReader()); // Read JSON data from the request
-//
-//                // Extract the updated properties from the JSON request
-//                String first_name = jsonNode.get("first_name").asText();
-//                String email = jsonNode.get("email").asText();
-//                String phone_number = jsonNode.get("phone_number").asText();
-//
-//                // Update the customer with the provided ID
-//                customers updatedCustomer = instance.updateCustomers(Integer.parseInt(customer_id), first_name, email, phone_number);
-//                if (updatedCustomer != null) {
-//                    String updatedCustomerJson = objectMapper.writeValueAsString(updatedCustomer);
-//                    response.setStatus(HttpServletResponse.SC_OK);
-//                    response.setContentType("application/json");
-//                    response.setCharacterEncoding("UTF-8");
-//                    out.print("Things you updated in the id "+customer_id);
-//                    out.print(updatedCustomerJson);
-//                } else {
-//                    response.sendError(HttpServletResponse.SC_NOT_FOUND, "Customer not found");
-//                }
-//            }
-//            else {
-//                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid URL");
-//            }
-//        }
-//        out.flush();
-//    }
+
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
@@ -271,17 +194,3 @@ protected void doDelete(HttpServletRequest request, HttpServletResponse response
     }
 }
 
-//curl -X POST http://localhost:8080/Application1/api/v1/customers -H "Content-Type: application/json" -d '{
-//        "name": "John Doe",
-//        "email": "john@example.com",
-//        "phone_number": "123-456-7890"
-//        }'
-
-// curl -X PUT http://localhost:8080/Application1/api/v1/customers/11 -H "Content-Type: application/json" -d '{
-//           "customer_id":8,
-//         "first_name": "New Name",
-//         "email":"new@gmail.com",
-//         "phone_number": "7384792374"
-//         }'
-
-//curl -X DELETE http://localhost:8080/Application1/api/v1/customers/11
